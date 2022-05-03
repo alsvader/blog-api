@@ -66,5 +66,5 @@ const loadArticles = () => {
 };
 
 app.listen(port, () => {
-	console.log(`App listening at http://localhost:${port}`);
+	console.log(`App listening at https://powerful-taiga-41766.herokuapp.com/`);
 });
