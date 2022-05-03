@@ -32,13 +32,18 @@ app.post('/captchaVerification', async (req, res) => {
 });
 
 const validateCaptcha = async (token) => {
-	const { RECAPTCHA_KEY } = process.env || '';
+	try {
+		const { RECAPTCHA_KEY } = process.env || '';
 
-	const response = await axios.post(
-		`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_KEY}&response=${token}`,
-	);
+		const response = await axios.post(
+			`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_KEY}&response=${token}`,
+		);
 
-	return response.data.success;
+		return response.data.success;
+	} catch (error) {
+		console.log('ERROR', error);
+		return false;
+	}
 };
 
 app.get('/articles', (req, res) => {
