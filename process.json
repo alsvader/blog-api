@@ -1,11 +1,8 @@
 {
-	"app": [
+	"apps": [
 		{
 			"name": "blog-api",
-			"script": "./index.js",
-			"env": {
-				"PORT": "8080"
-			}
+			"script": "./index.js"
 		}
 	]
 }

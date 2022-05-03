@@ -7,7 +7,7 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const fm = require('front-matter');
-const port = 5000;
+const port = process.env.PORT || 3000;
 
 app.use(helmet());
 app.use(cors());
@@ -38,8 +38,12 @@ const validateCaptcha = async (token) => {
 };
 
 app.get('/articles', (req, res) => {
-	const articles = loadArticles();
-	res.json(articles);
+	try {
+		const articles = loadArticles();
+		res.json(articles);
+	} catch (error) {
+		res.json([]);
+	}
 });
 
 const loadArticles = () => {
