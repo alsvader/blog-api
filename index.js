@@ -9,7 +9,11 @@ const path = require('path');
 const fm = require('front-matter');
 const port = process.env.PORT || 3000;
 
-app.use(helmet());
+app.use(
+	helmet({
+		crossOriginResourcePolicy: { policy: 'cross-origin' },
+	}),
+);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
